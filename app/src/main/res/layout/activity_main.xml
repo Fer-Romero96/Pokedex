@@ -7,12 +7,11 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainActivity">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get a Pokemon!" />
-
+        android:text="Get a Pokemon!"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
         android:layout_marginHorizontal="30sp"
         android:hint="nombre:"
         />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,24 +29,41 @@
         android:layout_marginTop="30sp"
         android:hint="tipo:"
         />
-
     <Button
-        android:id="@+id/agregabtn"
+        android:id="@+id/tomar_foto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30sp"
         android:layout_marginTop="50sp"
-        android:onClick="addPokemon"
-        android:text="Agrega pokemon"
+        android:onClick="fotoPokemon"
+        android:text="foto pokemon"
         android:textAllCaps="false" />
-
     <Button
-        android:id="@+id/consultarbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/agregabtn"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginTop="50sp"
+        android:text="agrega pokemon"
+        android:textAllCaps="false"
+        android:onClick="addPokemon"
+        />
+    <Button
+        android:id="@+id/consultabtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30sp"
         android:layout_marginTop="50sp"
-        android:onClick="getPokemon"
-        android:text="Dame pokemons"
+        android:onClick="getPokemons"
+        android:text="dame pokemons"
+        android:textAllCaps="false" />
+    <Button
+        android:id="@+id/logoutbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginTop="10sp"
+        android:onClick="logout"
+        android:text="logout"
         android:textAllCaps="false" />
 </LinearLayout>

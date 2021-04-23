@@ -29,8 +29,18 @@ class LoginActivity : AppCompatActivity() {
         // Inicializa objetos:
         auth = Firebase.auth
         setLoginRegister() //sigue en la siguiente sección.
+    }
 
+    override fun onStart() {
+        super.onStart()
 
+        // Para validar si los usuarios estan logeados y mantener su sesion
+        val usuarioActivo = auth.currentUser
+        if(usuarioActivo != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+
+        }
     }
 
     private fun setLoginRegister(){
