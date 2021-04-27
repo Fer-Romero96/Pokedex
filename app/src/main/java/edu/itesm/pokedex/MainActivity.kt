@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         // myRef.setValue("Hello, World!")
         database = FirebaseDatabase.getInstance()
-        reference = database.getReference("pokemons")
+        //reference = database.getReference("pokemons")
 
         //inicializa las variables:
         analytics = FirebaseAnalytics.getInstance(this)
@@ -108,6 +108,10 @@ class MainActivity : AppCompatActivity() {
         val nombre = findViewById<EditText>(R.id.nombre).text
         val tipo = findViewById<EditText>(R.id.tipo).text
         if(nombre.isNotEmpty() && nombre.isNotBlank() && tipo.isNotEmpty() && tipo.isNotBlank()){
+
+            val usuario = Firebase.auth.currentUser
+            reference = database.getReference("pokemons/${usuario.uid}")
+
             var latitude = 0.0
             var longitude = 0.0
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -132,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 val data = baos.toByteArray()
                 // ID unico
                 val fileName = UUID.randomUUID().toString()
-                val storage_reference = FirebaseStorage.getInstance().getReference("/pokefotos/$fileName")
+                val storage_reference = FirebaseStorage.getInstance().getReference("/pokefotos/${usuario.uid}/$fileName")
                 val uploadTask = storage_reference.putBytes(data)
 
                 // si se ejecuta bien la tarea de subir la imagen
@@ -243,8 +247,11 @@ class MainActivity : AppCompatActivity() {
         }
     }*/
 
-    public fun getPokemon(view : View){
+    public fun getPokemons(view : View){
 
+        startActivity(Intent(this, PokemonsActivity::class.java))
+
+        /*
         reference.addValueEventListener(object  : ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -262,6 +269,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-        })
+        })*/
+
     }
 }
